@@ -10,12 +10,12 @@ public class MagicSquare {
 
     public static void main(String[] args) throws IOException {
         for (char i = '1'; i <= '5'; i++) {
-            System.out.println(i + " " + String.valueOf(isLegalMagicSquare("./txt/" + i + ".txt")));
+            System.out.println(i + " " + String.valueOf(isLegalMagicSquare("src/P1/txt/" + i + ".txt")));
         }
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         generateMagicSquare(n);
-        System.out.println("6" + " " + String.valueOf(isLegalMagicSquare("./txt/" + "6" + ".txt")));
+        System.out.println("6" + " " + String.valueOf(isLegalMagicSquare("src/P1/txt/" + "6" + ".txt")));
         return;
     }
 
@@ -65,10 +65,10 @@ public class MagicSquare {
     }
 
     public static boolean generateMagicSquare(int n) throws IOException {
-    	if (n<0 || n%2==0) {
-    		System.out.println("Input Wrong");
-    		return false;
-    	}
+        if (n < 0 || n % 2 == 0) {
+            System.out.println("Input Wrong");
+            return false;
+        }
         int magic[][] = new int[n][n];
         int row = 0, col = n / 2, i, j, square = n * n;
         for (i = 1; i <= square; i++) {
