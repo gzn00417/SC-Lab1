@@ -65,6 +65,10 @@ public class MagicSquare {
     }
 
     public static boolean generateMagicSquare(int n) throws IOException {
+    	if (n<0 || n%2==0) {
+    		System.out.println("Input Wrong");
+    		return false;
+    	}
         int magic[][] = new int[n][n];
         int row = 0, col = n / 2, i, j, square = n * n;
         for (i = 1; i <= square; i++) {
