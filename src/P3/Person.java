@@ -7,6 +7,6 @@ public class Person {
     public FriendshipGraph.Node node = null;
 
     public Person(String PersonName) {
-        Name = PersonName;
+	Name = PersonName;
     }
 }
