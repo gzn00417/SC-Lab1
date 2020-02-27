@@ -189,7 +189,31 @@ public class TurtleSoup {
      * @param turtle the turtle context
      */
     public static void drawPersonalArt(Turtle turtle) {
-	throw new RuntimeException("implement me!");
+	int Size = 400, Step = 1, Densi = 1, ColorNum = 5;
+	for (int i = 1; i <= Size; i++) {
+	    switch (i % ColorNum) {
+	    case 0:
+		turtle.color(PenColor.BLUE);
+		break;
+	    case 1:
+		turtle.color(PenColor.GREEN);
+		break;
+	    case 2:
+		turtle.color(PenColor.YELLOW);
+		break;
+	    case 3:
+		turtle.color(PenColor.RED);
+		break;
+	    case 4:
+		turtle.color(PenColor.MAGENTA);
+		break;
+	    case 5:
+		turtle.color(PenColor.ORANGE);
+		break;
+	    }
+	    turtle.forward(Step * i);
+	    turtle.turn(360/ColorNum + Densi);
+	}
     }
 
     /**
