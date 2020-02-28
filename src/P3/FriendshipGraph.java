@@ -6,9 +6,19 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FriendshipGraph {
-    public static void main(String[] args[]) {
-	return;
-    }
+
+    /**
+     * @Class Node : A Node is linked with a particular Person based on graph theory.
+     * TODO Build nodes and Linking persons
+     * @param	next		the person joins in the graph after him/her
+     * @param	person	class Person matched with
+     * @param	vis		visited mark for BFS
+     * @param	dis		lowest distance from a chose person
+     * @param	lastEdge	first edge in First-Search
+     * @method LoadData	record which person THIS belongs to
+     * @method addNode	add a new Node for a person
+     * @method addNodeEdge	add a edge between 2 Nodes
+     */
 
     public class Node {
 	private Node next = null;
@@ -27,6 +37,14 @@ public class FriendshipGraph {
 	    nextVertex.next = this.next;
 	    this.next = nextVertex;
 	}
+	
+	/**
+	 * @author 1183710109
+	 * @Class	  Edge	A edge between 2 Nodes
+	 * @param origin	one Node
+	 * @param terminal	another Node
+	 * @param nextEdge the next edge which has the same ORIGIN with THIS
+	 */
 
 	public class Edge {
 	    public Node origin = null, terminal = null;
@@ -41,25 +59,38 @@ public class FriendshipGraph {
 	    this.lastEdge = newEdge;
 	}
     }
+    
+    /**
+     * @method	addVertex	add new vertex if the person's name is unduplicated
+     * @param	newPerson		adding person
+     * @param	head		head of Linked List of persons
+     * @param	NameSet	set of persons' names, used for removing duplication
+     */
 
     private Node head = null;
-    private HashSet NameSet = new HashSet();
+    private HashSet<String> NameSet = new HashSet<>();
 
-    public void addVertex(Person x) {
-	if (this.NameSet.contains(x.Name)) {
-	    System.out.println("Person " + x.Name + " already existed.");
+    public void addVertex(Person newPerson) {
+	if (NameSet.contains(newPerson.Name)) {
+	    System.out.println("Person " + newPerson.Name + " already existed.");
 	    System.exit(0);
 	}
-	this.NameSet.add(x.Name);
+	NameSet.add(newPerson.Name);
 	Node NewVertex = new Node();
-	x.node = NewVertex;
-	NewVertex.LoadData(x);
-	if (this.head == null)
-	    this.head = NewVertex;
+	newPerson.node = NewVertex;
+	NewVertex.LoadData(newPerson);
+	if (head == null)
+	    head = NewVertex;
 	else
-	    this.head.addNode(NewVertex);
+	    head.addNode(NewVertex);
 	return;
     }
+    
+    /**
+     * @method	addEdge	add edges of double directions
+     * @param a, b	2 persons being linking with an edge
+     * @param A, B	2 nodes of the 2 persons
+     */
 
     public void addEdge(Person a, Person b) {
 	Node A = a.node, B = b.node;
@@ -67,6 +98,13 @@ public class FriendshipGraph {
 	B.addNodeEdge(A);
 	return;
     }
+    
+    /**
+     * @method getDistance
+     * @param sta	path starting person
+     * @param end	path ending person
+     * @return		distance between 2 persons or -1 when unlinked
+     */
 
     public int getDistance(Person sta, Person end) {
 	if (sta == end)

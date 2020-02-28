@@ -36,8 +36,8 @@ class FriendshipGraphTest {
 	assertEquals(-1, graph.getDistance(rachel, kramer));
     }
 
-    /*
-     * Test program exit when graph has the same names.
+    /**
+     * TODO to test program exit when graph has the same names.
      */
     @Test
     void ExceptionProcess() {
