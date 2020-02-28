@@ -21,11 +21,11 @@ public class TurtleSoup {
      * @param sideLength length of each side
      */
     public static void drawSquare(Turtle turtle, int sideLength) {
-	turtle.color(PenColor.BLACK);
-	for (int i = 0; i < 4; i++) {
-	    turtle.forward(sideLength);
-	    turtle.turn(90);
-	}
+        turtle.color(PenColor.BLACK);
+        for (int i = 0; i < 4; i++) {
+            turtle.forward(sideLength);
+            turtle.turn(90);
+        }
     }
 
     /**
@@ -38,7 +38,7 @@ public class TurtleSoup {
      * @return angle in degrees, where 0 <= angle < 360
      */
     public static double calculateRegularPolygonAngle(int sides) {
-	return (double) 180.0 - (double) 360.0 / sides;
+        return (double) 180.0 - (double) 360.0 / sides;
     }
 
     /**
@@ -53,7 +53,7 @@ public class TurtleSoup {
      * @return the integer number of sides
      */
     public static int calculatePolygonSidesFromAngle(double angle) {
-	return (int) Math.round(360 / ((double) 180.0 - angle));
+        return (int) Math.round(360 / ((double) 180.0 - angle));
     }
 
     /**
@@ -67,11 +67,11 @@ public class TurtleSoup {
      * @param sideLength length of each side
      */
     public static void drawRegularPolygon(Turtle turtle, int sides, int sideLength) {
-	turtle.color(PenColor.BLACK);
-	for (int i = 0; i < sides; i++) {
-	    turtle.forward(sideLength);
-	    turtle.turn((double) 180.0 - calculateRegularPolygonAngle(sides));
-	}
+        turtle.color(PenColor.BLACK);
+        for (int i = 0; i < sides; i++) {
+            turtle.forward(sideLength);
+            turtle.turn((double) 180.0 - calculateRegularPolygonAngle(sides));
+        }
     }
 
     /**
@@ -95,12 +95,12 @@ public class TurtleSoup {
      *         must be 0 <= angle < 360
      */
     public static double calculateBearingToPoint(double currentBearing, int currentX, int currentY, int targetX,
-	    int targetY) {
-	double angle = Math.atan2(targetY - currentY, targetX - currentX) * 180.0 / Math.PI;
-	if (angle < 0)
-	    angle += 360.0;
-	double bearing = (360 - angle + 90 >= 360 ? 90 - angle : 360 - angle + 90) - currentBearing;
-	return bearing < 0 ? 360.0 + bearing : bearing;
+            int targetY) {
+        double angle = Math.atan2(targetY - currentY, targetX - currentX) * 180.0 / Math.PI;
+        if (angle < 0)
+            angle += 360.0;
+        double bearing = (360 - angle + 90 >= 360 ? 90 - angle : 360 - angle + 90) - currentBearing;
+        return bearing < 0 ? 360.0 + bearing : bearing;
     }
 
     /**
@@ -118,19 +118,19 @@ public class TurtleSoup {
      *         points) == 0, otherwise of size (# of points) - 1
      */
     public static List<Double> calculateBearings(List<Integer> xCoords, List<Integer> yCoords) {
-	double currentBearing = 0.0;
-	int currentX = xCoords.get(0), currentY = yCoords.get(0), targetX, targetY;
-	int length = xCoords.size();
-	List<Double> ans = new ArrayList<>();
-	for (int i = 1; i < length; i++) {
-	    targetX = xCoords.get(i);
-	    targetY = yCoords.get(i);
-	    ans.add(calculateBearingToPoint(currentBearing, currentX, currentY, targetX, targetY));
-	    currentBearing = ans.get(i - 1);
-	    currentX = targetX;
-	    currentY = targetY;
-	}
-	return ans;
+        double currentBearing = 0.0;
+        int currentX = xCoords.get(0), currentY = yCoords.get(0), targetX, targetY;
+        int length = xCoords.size();
+        List<Double> ans = new ArrayList<>();
+        for (int i = 1; i < length; i++) {
+            targetX = xCoords.get(i);
+            targetY = yCoords.get(i);
+            ans.add(calculateBearingToPoint(currentBearing, currentX, currentY, targetX, targetY));
+            currentBearing = ans.get(i - 1);
+            currentX = targetX;
+            currentY = targetY;
+        }
+        return ans;
     }
 
     /**
@@ -144,39 +144,39 @@ public class TurtleSoup {
      *         perimeter of the convex hull
      */
     public static Set<Point> convexHull(Set<Point> points) {
-	Set<Point> convexHullPoints = new HashSet<Point>();
-	Point a = new Point(Double.MAX_VALUE, Double.MAX_VALUE);
-	for (Point i : points) {
-	    if (i.x() < a.x() || (i.x() == a.x() && i.y() < a.y()))
-		a = i;
-	}
-	Point curPoint = a, minPoint = null, lastPoint = a;
-	double x1 = 0.0, y1 = -1.0;
-	do {
-	    convexHullPoints.add(curPoint);
-	    double minTheta = Double.MAX_VALUE, x2 = 0.0, y2 = 0.0;
-	    for (Point i : points) {
-		if ((!convexHullPoints.contains(i) || i == a) && (i != lastPoint)) {
-		    double x3 = i.x() - curPoint.x(), y3 = i.y() - curPoint.y();
-		    double Theta = Math
-			    .acos((x1 * x3 + y1 * y3) / Math.sqrt(x1 * x1 + y1 * y1) / Math.sqrt(x3 * x3 + y3 * y3));
-		    // System.out.println(i.x() + " " + i.y() + " " + Theta);
-		    if (Theta < minTheta || (Theta == minTheta && x3 * x3 + y3 * y3 > Math.pow(i.x() - minPoint.x(), 2)
-			    + Math.pow(i.y() - minPoint.y(), 2))) {
-			minPoint = i;
-			minTheta = Theta;
-			x2 = x3;
-			y2 = y3;
-		    }
-		}
-	    }
-	    x1 = x2;
-	    y1 = y2;
-	    lastPoint = curPoint;
-	    curPoint = minPoint;
-	    // System.out.println(curPoint.x() + " " + curPoint.y());
-	} while (curPoint != a);
-	return convexHullPoints;
+        Set<Point> convexHullPoints = new HashSet<Point>();
+        Point a = new Point(Double.MAX_VALUE, Double.MAX_VALUE);
+        for (Point i : points) {
+            if (i.x() < a.x() || (i.x() == a.x() && i.y() < a.y()))
+                a = i;
+        }
+        Point curPoint = a, minPoint = null, lastPoint = a;
+        double x1 = 0.0, y1 = -1.0;
+        do {
+            convexHullPoints.add(curPoint);
+            double minTheta = Double.MAX_VALUE, x2 = 0.0, y2 = 0.0;
+            for (Point i : points) {
+                if ((!convexHullPoints.contains(i) || i == a) && (i != lastPoint)) {
+                    double x3 = i.x() - curPoint.x(), y3 = i.y() - curPoint.y();
+                    double Theta = Math
+                            .acos((x1 * x3 + y1 * y3) / Math.sqrt(x1 * x1 + y1 * y1) / Math.sqrt(x3 * x3 + y3 * y3));
+                    // System.out.println(i.x() + " " + i.y() + " " + Theta);
+                    if (Theta < minTheta || (Theta == minTheta && x3 * x3 + y3 * y3 > Math.pow(i.x() - minPoint.x(), 2)
+                            + Math.pow(i.y() - minPoint.y(), 2))) {
+                        minPoint = i;
+                        minTheta = Theta;
+                        x2 = x3;
+                        y2 = y3;
+                    }
+                }
+            }
+            x1 = x2;
+            y1 = y2;
+            lastPoint = curPoint;
+            curPoint = minPoint;
+            // System.out.println(curPoint.x() + " " + curPoint.y());
+        } while (curPoint != a);
+        return convexHullPoints;
     }
 
     /**
@@ -189,31 +189,31 @@ public class TurtleSoup {
      * @param turtle the turtle context
      */
     public static void drawPersonalArt(Turtle turtle) {
-	int Size = 400, Step = 1, Densi = 1, ColorNum = 5;
-	for (int i = 1; i <= Size; i++) {
-	    switch (i % ColorNum) {
-	    case 0:
-		turtle.color(PenColor.BLUE);
-		break;
-	    case 1:
-		turtle.color(PenColor.GREEN);
-		break;
-	    case 2:
-		turtle.color(PenColor.YELLOW);
-		break;
-	    case 3:
-		turtle.color(PenColor.RED);
-		break;
-	    case 4:
-		turtle.color(PenColor.MAGENTA);
-		break;
-	    case 5:
-		turtle.color(PenColor.ORANGE);
-		break;
-	    }
-	    turtle.forward(Step * i);
-	    turtle.turn(360/ColorNum + Densi);
-	}
+        int Size = 400, Step = 1, Densi = 1, ColorNum = 5;
+        for (int i = 1; i <= Size; i++) {
+            switch (i % ColorNum) {
+                case 0:
+                    turtle.color(PenColor.BLUE);
+                    break;
+                case 1:
+                    turtle.color(PenColor.GREEN);
+                    break;
+                case 2:
+                    turtle.color(PenColor.YELLOW);
+                    break;
+                case 3:
+                    turtle.color(PenColor.RED);
+                    break;
+                case 4:
+                    turtle.color(PenColor.MAGENTA);
+                    break;
+                case 5:
+                    turtle.color(PenColor.ORANGE);
+                    break;
+            }
+            turtle.forward(Step * i);
+            turtle.turn(360 / ColorNum + Densi);
+        }
     }
 
     /**
@@ -224,11 +224,13 @@ public class TurtleSoup {
      * @param args unused
      */
     public static void main(String args[]) {
-	DrawableTurtle turtle = new DrawableTurtle();
+        DrawableTurtle turtle = new DrawableTurtle();
 
-	drawPersonalArt(turtle);
+        drawPersonalArt(turtle);
+        
+        // drawRegularPolygon(turtle, 6, 100);
 
-	// draw the window
-	turtle.draw();
+        // draw the window
+        turtle.draw();
     }
 }
