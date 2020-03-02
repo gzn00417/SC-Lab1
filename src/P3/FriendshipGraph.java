@@ -87,11 +87,15 @@ public class FriendshipGraph {
 
 	/**
 	 * @method addEdge add edges of double directions
-	 * @param a, b 2 persons being linking with an edge
-	 * @param A, B 2 nodes of the 2 persons
+	 * @param a,b 2 persons being linking with an edge
+	 * @param A,B 2 nodes of the 2 persons
 	 */
 
 	public void addEdge(Person a, Person b) {
+		if (a == b) {
+			System.out.println("They are the same one.");
+			System.exit(0);
+		}
 		Node A = a.node, B = b.node;
 		A.addNodeEdge(B);
 		B.addNodeEdge(A);
