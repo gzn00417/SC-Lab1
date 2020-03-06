@@ -1,8 +1,8 @@
 package P3;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.*;
+import org.junit.Test;
 
 class FriendshipGraphTest {
 
