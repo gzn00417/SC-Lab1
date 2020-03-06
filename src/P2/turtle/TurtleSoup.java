@@ -8,7 +8,6 @@ import java.util.Set;
 
 import P2.turtle.Turtle;
 
-import java.nio.channels.NonReadableChannelException;
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -144,6 +143,7 @@ public class TurtleSoup {
      *         perimeter of the convex hull
      */
     public static Set<Point> convexHull(Set<Point> points) {
+	if (points.size()<=3) return points;
         Set<Point> convexHullPoints = new HashSet<Point>();
         Point a = new Point(Double.MAX_VALUE, Double.MAX_VALUE);
         for (Point i : points) {
