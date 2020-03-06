@@ -21,5 +21,6 @@
 	<classpathentry kind="lib" path="lib/JUnit5/org.junit.platform.suite.api_1.5.1.v20190826-0900.jar"/>
 	<classpathentry kind="lib" path="lib/JUnit5/org.junit.vintage.engine_5.5.1.v20190826-0900.jar"/>
 	<classpathentry kind="lib" path="lib/JUnit5/org.opentest4j_1.2.0.v20190826-0900.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
