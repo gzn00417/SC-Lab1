@@ -1,10 +1,12 @@
-﻿ ![](https://img-blog.csdnimg.cn/20200308214236949.png)
+![HIT](https://img-blog.csdnimg.cn/20200308214236949.png)
+
 # 2020年春季学期计算机学院《软件构造》课程Lab1实验报告
 
 > - Software Construction Lab-1
 > - Fundamental Java Programming and Testing
 > - 1183710109郭茁宁
 > - [CSDN博客](https://blog.csdn.net/gzn00417/article/details/104741341)
+> - [GitHub仓库](https://github.com/gzn00417/SC-Lab1)
 
 # 1 实验目标概述
 
@@ -22,7 +24,8 @@
 ## 3.1 Magic Squares
 - 幻方是一个有n*n个不同数字、且每行、每列和斜线上都有相同的和的方形结构。要求写出程序判断输入一个矩阵是否是幻方，并且构造幻方。
 - Main函数有两个部分，分别是：读取5个矩阵并判断、生成一个矩阵判断后输出到文件中。在读取时，用for循环分别将字符1到5拼入地址中，输出同理。其中在生成幻方之前，判断n的合法性。
- ![](https://img-blog.csdnimg.cn/20200308214758311.png)
+
+![](https://img-blog.csdnimg.cn/20200308214758311.png)
 
 
 ```java
@@ -633,6 +636,3 @@ public class Person {
 
 # 6 实验过程中收获的经验、教训、感想
 - 略
-
-
-
