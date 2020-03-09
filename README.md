@@ -127,6 +127,7 @@ ii.	Row=0，Col=n/2
 i.	将矩阵的[row, col]位置填充为i
 ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
  - 打开文件，打印结果
+
 ![](https://img-blog.csdnimg.cn/20200308215001228.png)
 
 ```java
@@ -162,14 +163,19 @@ ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
 
 ## 3.2 Turtle Graphics
  - 该任务需要我们clone已有的程序后，利用turtle按照要求画图，其中需要利用几何知识设计一些函数简化编程，最后可以发挥想象力进行Personal Art。首先分析turtle的package组成，了解类成员。
+
 ![](https://img-blog.csdnimg.cn/20200308215034920.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
+
 ### 3.2.1 Problem 1: Clone and import
  - 打开目标存储文件夹 右键点击Git Bash
  - 输入git clone https://github.com/ComputerScienceHIT/Lab1-1183710109.git
+
 ![](https://img-blog.csdnimg.cn/20200308215103367.png)
+
 ### 3.2.2 Problem 3: Turtle graphics and drawSquare
 - 该函数需要实现：已知边长，画出边长为指定数值的正方形。参数是海龟对象turtle和编程sidelength。
 - 首先将海龟画笔设置为黑色。然后执行4次的前进sidelength长度、转完90度，即可完成一个边长为sidelength的正方形。下图是边长为200的正方形：
+
 ![](https://img-blog.csdnimg.cn/20200309102244663.png)
 
 ```java
@@ -186,6 +192,7 @@ ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
 - 该问题首先希望已知正多边形边数的情况下计算正多边形的内角度。根据几何知识可以推导得公式：
 - $(double) 180.0 - (double) 360.0 / sides$
 - 使用该公式，实现calculateRegularPolygonAngle，通过运行TurtleSoupTest中的Junit测试得：
+
 ![](https://img-blog.csdnimg.cn/20200309102345759.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
 
 ```java
@@ -214,6 +221,7 @@ ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
 2. 然后取相反数（海龟旋转的方向是顺时针，坐标轴角度的旋转角度的逆时针）；
 3. 再减去90°（海龟的0°线是向上，坐标轴的0°线是向右，向右到向上要逆时针旋转90°）；
 4. 最后调整为0-360°之间（可能大于360°或小于0°）。
+
 ![](https://img-blog.csdnimg.cn/20200309102532789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
 
 ```java
@@ -233,6 +241,7 @@ ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
 3. 每次将第i+1号点设置为“终点”，通过上一个函数计算旋转角度并存储到List中；
 4. 将下一次的“起点”用当前“终点”更新，继续循环；
 5. 退出循环后返回List。
+
 ![](https://img-blog.csdnimg.cn/20200309102618515.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
 
 ```java
@@ -257,25 +266,39 @@ ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
 #### 3.2.5.1 [凸包问题](https://blog.csdn.net/gzn00417/article/details/104553805)
 #### 3.2.5.2 [算法描述](https://blog.csdn.net/gzn00417/article/details/104553805)
 #### 3.2.5.3	JUnit测试结果
+
 ![](https://img-blog.csdnimg.cn/20200309102821576.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
+
 #### 3.2.6 [Problem 8: Personal art](https://blog.csdn.net/gzn00417/article/details/104521856)
+
 ![](https://img-blog.csdnimg.cn/20200309102950349.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
+
 ### 3.2.7 [Submitting](https://blog.csdn.net/gzn00417/article/details/104173147)
+
 ## 3.3 Social Network
 - 该任务要求设计一张社交网络图，基于连接人与人，并且能计算任意两人之间的联系情况。网络图基于两个类，分别是FriendshipGraph类和Person类。
+
 ![](https://img-blog.csdnimg.cn/20200309103715845.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
+
 ### 3.3.1 设计/实现FriendshipGraph类
 - 该类的实际意义是一张社交网络图，包括了代表每个Person的点、代表每两个Person之间联系的边、以及建立点和联系和计算距离的方法。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200309103742849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
+
+![](https://img-blog.csdnimg.cn/20200309103742849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
 
 #### 3.3.1.1	邻接表存储结构
 - 在存储社交网络时，我使用了邻接表。所有的Node被连在一起，方便查找，并补充了一个head变量用来标记首个Node。假定一个社交网络为
+
 ![](https://img-blog.csdnimg.cn/20200309103835150.png)
+
 - 则该图转换为邻接表的示意图为：
+
 ![](https://img-blog.csdnimg.cn/20200309103857537.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
+
 #### 3.3.1.2	Class Node
 - Node类要实现的是将一个Person转换为邻接表里的点，所以一个Node有邻接表中点的重要成员变量：下一个Node为next，对应的Person对象person，直接连接的边lastEdge，以及实现邻接表的相关方法。此外，为了能实现方法getDistance，我另外增设了vis和dis两个变量用来记录是否访问过以及与当前起点的最近距离。
+
 ![](https://img-blog.csdnimg.cn/20200309103934491.png)
+
 - ***Class Node.Edge***
 	该类是邻接表中的边，每个Edge对象存储了邻接表中的下一条边，以及对应的边的两个Person所对应的Node。
 - ***Method Node.LoadData***
@@ -341,6 +364,7 @@ ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
 
 #### 3.3.1.3	Method addVertex()
 - 该方法目标是在社交网络图中增加一个新的节点，参数是要加入的Person类。首先，方法要对Person的名字进行判重：用哈希集合HashSet记录下已加入的所有Person的名字，每当新加入一个Person则进行判断是否在集合中；然后则新建一个Node类，使每一个Person与一个Node对应起来。
+
 ![](https://img-blog.csdnimg.cn/20200309104157972.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
 
 ```java
@@ -373,6 +397,7 @@ ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
 
 #### 3.3.1.4	Method addEdge()
 - 该方法目标是将两个Person之间进行联系，在邻接表中，用有向边来代表“有社交关系”，由于题目设定是社交默认为双向，则需要在函数中两次调用Node中的addNodeEdge方法加两个方向的边。考虑到可扩展性和可复用性，程序考虑到了“单向社交的情况”，仅需将双向加边中的“B->A”删除即可。
+
 ![](https://img-blog.csdnimg.cn/20200309104237580.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
 
 ```java
@@ -396,6 +421,7 @@ ii.	在保证坐标在矩阵范围内的情况下使Row--，Col++
 
 #### 3.3.1.5	Method getDistance()
 - 该方法要计算任意两个Person之间的“距离”，若没有任何社交关系则输出“-1”。两个Person之间计算使用BFS，默认边权为1，则在搜索到边时加1即可，搜索到目标点退出；特殊情况根据要求输出0或-1。
+
 ![](https://img-blog.csdnimg.cn/20200309104454939.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
 
 ```java
@@ -577,7 +603,9 @@ public class Person {
 ```
 #### 3.3.4.2	简单图测试
 - 根据题目中的社交网络图：
- ![](https://img-blog.csdnimg.cn/20200309104808101.png)
+
+![](https://img-blog.csdnimg.cn/20200309104808101.png)
+
 - 分别测试：
 1.	Rachel和Ross距离是1，Rachel和Ben距离是2
 2.	Rachel和Rachel距离是0
@@ -585,20 +613,26 @@ public class Person {
 
 #### 3.3.4.3	复杂图测试
 - 设计10个点、10条边的社交网络图：
- ![](https://img-blog.csdnimg.cn/20200309104835706.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
+
+![](https://img-blog.csdnimg.cn/20200309104835706.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2d6bjAwNDE3,size_16,color_FFFFFF,t_70)
+
 - 分别测试：
 1.	AE距离2，AD距离1，AG距离3，BF距离3，DF距离2，HJ距离2
 2.	II距离0
 3.	DJ距离-1，CI距离-1，FH距离-1
 
 #### 3.3.4.4	Junit测试结果
+
 ![](https://img-blog.csdnimg.cn/20200309104909162.png)
+
 # 4 实验进度记录
 - 略
 # 5 实验过程中遇到的困难与解决途径
+
 - [Java专栏](https://blog.csdn.net/gzn00417/category_9696603.html)
+
 # 6 实验过程中收获的经验、教训、感想
 - 略
 
 
-​	
+
