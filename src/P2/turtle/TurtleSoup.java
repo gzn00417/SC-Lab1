@@ -226,9 +226,9 @@ public class TurtleSoup {
     public static void main(String args[]) {
         DrawableTurtle turtle = new DrawableTurtle();
 
-        drawPersonalArt(turtle);
+        // drawPersonalArt(turtle);
         
-        // drawRegularPolygon(turtle, 6, 100);
+        drawRegularPolygon(turtle, 17, 30);
 
         // draw the window
         turtle.draw();
