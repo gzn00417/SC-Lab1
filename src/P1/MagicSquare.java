@@ -69,21 +69,21 @@ public class MagicSquare {
 	}
 
 	public static boolean generateMagicSquare(int n) throws IOException {
-		int magic[][] = new int[n][n];
+		int magic[][] = new int[n][n]; // 新建矩阵
 		int row = 0, col = n / 2, i, j, square = n * n;
 		for (i = 1; i <= square; i++) {
-			magic[row][col] = i;
-			if (i % n == 0)
+			magic[row][col] = i; // row行col列赋值为i
+			if (i % n == 0) // row在边界时
 				row++;
 			else {
-				if (row == 0)
-					row = n - 1;
+				if (row == 0) // row在左边界时
+					row = n - 1; // 移动到右边界
 				else
-					row--;
-				if (col == (n - 1))
-					col = 0;
+					row--; // 否则继续往左移动
+				if (col == (n - 1)) // col在下边界时
+					col = 0; // col移动到上边界
 				else
-					col++;
+					col++; // 否则向下移动
 			}
 		}
 		File file = new File("src/P1/txt/6.txt");
