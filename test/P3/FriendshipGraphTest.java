@@ -1,16 +1,15 @@
 package P3;
 
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
-class FriendshipGraphTest {
+public class FriendshipGraphTest {
 
 	/**
 	 * Basic Network Test
 	 */
 	@Test
-	void GraphTest1() {
+	public void GraphTest1() {
 		FriendshipGraph graph = new FriendshipGraph();
 
 		Person rachel = new Person("Rachel");
@@ -43,7 +42,7 @@ class FriendshipGraphTest {
 	 * TODO to test program exit when graph has the same names.
 	 */
 	@Test
-	void ExceptionProcess() {
+	public void ExceptionProcess() {
 		FriendshipGraph graph = new FriendshipGraph();
 
 		Person a = new Person("a");
@@ -60,7 +59,7 @@ class FriendshipGraphTest {
 	 * Further Test
 	 */
 	@Test
-	void GrpahTest2() {
+	public void GrpahTest2() {
 		FriendshipGraph graph = new FriendshipGraph();
 
 		Person a = new Person("A");
